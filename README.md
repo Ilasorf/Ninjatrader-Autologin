@@ -4,13 +4,20 @@ Tired of typing your password every time you open NinjaTrader? This tool does it
 
 ---
 
+## Files included
+
+- **Setup.bat** — run once to save your credentials
+- **Login.bat** — use every day to launch NinjaTrader automatically
+
+---
+
 ## Is it safe?
 
 Yes. Your password is saved by the Windows operating system in the **Credential Manager** — the same system Chrome uses to remember your website passwords. **Your data never leaves your PC**, no internet connection, no external servers.
 
 The clipboard is always cleared immediately after use — **even if an error or crash occurs** — so your password is never left exposed.
 
-The code is readable by anyone — unlike a regular program (.exe), you can open the files with any text editor (e.g. Notepad) and see exactly what they do. If you want to verify, copy the content and paste it into ChatGPT, Claude or any other AI — it will tell you in seconds if there is anything suspicious.
+The `.bat` files contain PowerShell code encoded in base64. To verify what they do, just paste the content of either file into ChatGPT, Claude or any other AI and ask *"what does this script do?"* — it will decode and explain everything in plain language in seconds.
 
 ---
 
@@ -18,7 +25,9 @@ The code is readable by anyone — unlike a regular program (.exe), you can open
 
 1. Download both files (`Setup.bat` and `Login.bat`) and place them in the same folder, for example on your Desktop
 2. Double-click **Setup.bat** — a small window will open where you enter your NinjaTrader email and password. You can also paste your password with Ctrl+V. Click Save and close
-3. From now on, use **Login.bat** every time you want to open NinjaTrader — it will launch it and enter your password automatically
+3. From now on, double-click **Login.bat** every time you want to open NinjaTrader — it will launch it and enter your password automatically
+
+> **After double-clicking Login.bat, do not touch the mouse or keyboard for a few seconds** — the script needs to find the login window and enter your password. Once NinjaTrader is fully loaded you can use it normally.
 
 > **That's it.** No installation, no admin rights required, no additional software.
 
@@ -26,7 +35,12 @@ The code is readable by anyone — unlike a regular program (.exe), you can open
 
 ## Notes
 
-- **Non-standard installation path:** you don't need to do anything special — the tool searches automatically in several locations on your PC. Only in very rare cases will it show a message with instructions to set the path manually by creating a `NT_Path.txt` file in the same folder as `Login.bat`, containing the full path to NinjaTrader.exe (e.g. `D:\Trading\NinjaTrader 8\bin\NinjaTrader.exe`)
+- **Non-standard installation path:** the tool searches for NinjaTrader automatically in several locations on your PC. If it cannot find it, it will show an error message — in that case, create a plain text file called `NT_Path.txt` in the same folder as `Login.bat`, open it with Notepad, and type or paste the full path to your NinjaTrader.exe on a single line, for example:
+  ```
+  D:\Trading\NinjaTrader 8\bin\NinjaTrader.exe
+  ```
+  Save the file and run `Login.bat` again.
+
 - **Password change:** just run `Setup.bat` again
 - **After a reboot:** credentials are permanently stored, just use `Login.bat` as usual
 
@@ -55,4 +69,3 @@ NinjaTrader 8 installed in the standard path (`C:\Program Files\NinjaTrader 8`).
 ---
 
 ☕ If you find this tool useful, buy me a coffee! → [ko-fi.com/ilasorf](https://ko-fi.com/ilasorf)
-
